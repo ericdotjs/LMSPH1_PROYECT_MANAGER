@@ -7,7 +7,7 @@
         x:Class="LMSPH1_PROYECT_MANAGER.Views.MainWindow"
         x:DataType="vm:MainViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="LMSPH1_PROYECT_MANAGER">
+        Title="The Maker">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,8 +15,29 @@
         <vm:MainViewModel />
     </Design.DataContext>
 
-    <TextBox Text="{Binding Greeting}"
-             HorizontalAlignment="Center"
-             VerticalAlignment="Center" />
+ <DockPanel>
+
+    <Menu DockPanel.Dock="Top" Background="Gray">
+      <MenuItem Header="_File" >
+      <MenuItem Header="_New Proyect"/>
+      <MenuItem Header="_Load Proyect"/>
+      <Separator/>
+      <MenuItem Header="_Exit"/>
+      </MenuItem>  
+      <MenuItem Header="_Settings">
+        <MenuItem Header="Set Game Directory"/>
+      </MenuItem>
+      </Menu>
+
+ <!--  <TextBlock DockPanel.Dock="Bottom" Background="Lime" Text="Ready" />
+
+    <StackPanel DockPanel.Dock="Right" Width="100">
+      <Button Content="Zoom in" />
+      <Button Content="Zoom out" />
+    </StackPanel>--> 
+
+    <ContentControl Background="Beige" />  <!-- fills remaining space -->
+
+</DockPanel>
 
 </Window>
