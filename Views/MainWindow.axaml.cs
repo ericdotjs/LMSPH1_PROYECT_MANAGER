@@ -12,15 +12,15 @@ namespace LMSPH1_PROYECT_MANAGER.Views;
 
 public partial class MainWindow : Window
 {
-     public Maker app;
+    public Maker app;
     public MainWindow()
     {
         InitializeComponent();
         app = new Maker(this);
     }
 
-   
-    
-
-
+    private void SetPaths_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        _ = app.openDialogSettingsPaths();
+    }
 }

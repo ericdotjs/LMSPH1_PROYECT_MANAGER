@@ -9,7 +9,7 @@ public partial class NewProject : Window
 {
     public NewProject()
     {
-        
+        InitializeComponent();
     }
 
 

@@ -24,7 +24,6 @@ public sealed class StorageSettings
         folderSettings = $"{basePath}settings";
         fileName = "config.json";
         fileFullPath = $"{folderSettings}/{fileName}";
-        Console.WriteLine(fileFullPath);
     }
 
     public bool FolderExist => Directory.Exists(folderSettings);
@@ -40,8 +39,7 @@ public sealed class StorageSettings
     public async Task<bool> LoadSettings()
     {
        
-            config = JsonConvert.DeserializeObject<Config>(await File.ReadAllTextAsync(fileName, CancellationToken.None));
-
+            config = JsonConvert.DeserializeObject<Config>(await File.ReadAllTextAsync(fileFullPath, CancellationToken.None));
             if(config is null)
                     return false;
 

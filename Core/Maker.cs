@@ -3,6 +3,9 @@ using Avalonia;
 using ConfigSettings = LMSPH1_PROYECT_MANAGER.Models.Confg;
 using LMSPH1_PROYECT_MANAGER.Utils;
 using System.IO;
+using System;
+using LMSPH1_PROYECT_MANAGER.Views;
+using LMSPH1_PROYECT_MANAGER.ViewModels.ConfigurePaths;
 
 namespace LMSPH1_PROYECT_MANAGER.Core
 {
@@ -19,7 +22,26 @@ namespace LMSPH1_PROYECT_MANAGER.Core
             _ = ScanSettingsFile();
 
         }
+        public async Task openDialogSettingsPaths()
+        {
 
+           ConfigurePathsViewModel vm = new ConfigurePathsViewModel(
+                storageSettings.config);
+
+            var dialog = new ConfigurePaths()
+            {
+                DataContext = vm
+            };
+            bool? result = await dialog.ShowDialog<bool?>((Avalonia.Controls.Window) mainWWindow);
+            if(result == true)
+            {
+                vm.ApplyChanges();
+                storageSettings.config = vm._config;
+                await storageSettings.SaveSettings(vm._config);
+                await storageSettings.LoadSettings();
+            }
+           
+        }
         public async Task ScanSettingsFile()
         {
             if (storageSettings.FileExists)

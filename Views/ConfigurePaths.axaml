@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:LMSPH1_PROYECT_MANAGER.ViewModels.ConfigurePaths"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="320"
+        x:Class="LMSPH1_PROYECT_MANAGER.Views.ConfigurePaths"
+        x:DataType="vm:ConfigurePathsViewModel"
+        Width="800" Height="320"
+        Title="ConfigurePaths">
+
+  <Design.DataContext>
+        <vm:ConfigurePathsViewModel/>
+    </Design.DataContext>
+        
+  <StackPanel Margin="20">
+  <TextBlock Margin="0 5">LMSPH1 Game Directory Base:</TextBlock>
+  <TextBox Text="{Binding GameBase}" />
+  <TextBlock Margin="0 5">Chars Projects Directory:</TextBlock>
+  <TextBox Text="{Binding Projects}" />
+  <TextBlock Margin="0 5">Chars Publish Directry</TextBlock>
+  <TextBox Text="{Binding Publish}" />
+
+  <WrapPanel ItemSpacing="15" Margin="30" ItemsAlignment="Center">
+
+<Button Name="SaveConfig" Click="SaveConfig_Click">Save Changes</Button>
+  <Button Name="CanceConfig" Click="CanceConfig_Click">Cancel</Button>
+  </WrapPanel>
+  
+</StackPanel>
+</Window>
