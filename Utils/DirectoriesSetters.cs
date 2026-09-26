@@ -33,7 +33,6 @@ namespace LMSPH1_PROYECT_MANAGER.Utils
 
         if (folder.Count > 0)
         {
-            Console.WriteLine($"{folder[0].Path.LocalPath}");
             return folder[0].Path.LocalPath;
         }
         

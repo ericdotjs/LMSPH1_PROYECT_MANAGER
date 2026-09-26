@@ -31,7 +31,7 @@ public sealed class StorageSettings
     public async Task SaveSettings(Config newConfig)
     {
        config = newConfig;
-       string settings = JsonConvert.SerializeObject(config); 
+       string settings = JSonManager.SerializeObject(config); 
        await File.WriteAllTextAsync(fileFullPath,settings, CancellationToken.None);
     }
 
@@ -39,7 +39,7 @@ public sealed class StorageSettings
     public async Task<bool> LoadSettings()
     {
        
-            config = JsonConvert.DeserializeObject<Config>(await File.ReadAllTextAsync(fileFullPath, CancellationToken.None));
+            config = JSonManager.DeserializeObject<Config>(await File.ReadAllTextAsync(fileFullPath, CancellationToken.None));
             if(config is null)
                     return false;
 
