@@ -23,4 +23,9 @@ public partial class MainWindow : Window
     {
         _ = app.openDialogSettingsPaths();
     }
+
+    private void NewProject_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        _ = app.openDialogNewProject();
+    }
 }

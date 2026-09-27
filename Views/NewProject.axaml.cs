@@ -12,5 +12,13 @@ public partial class NewProject : Window
         InitializeComponent();
     }
 
+    private void CreateButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        Close(true);
+    }
 
+    private void CancelButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        Close(false);
+    }
 }

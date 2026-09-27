@@ -1,27 +1,29 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:LMSPH1_PROYECT_MANAGER.ViewModels.Project"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="380"
         x:Class="LMSPH1_PROYECT_MANAGER.Views.NewProject"
-        Title="NewProject">
-  <StackPanel Margin="150"
-            Spacing="8">
-    <Label>New Character</Label>        
+        x:DataType="vm:ProjectViewModel"
+        Height="380"
+        Width="800"
+        Title="New Project">
+  <StackPanel Margin="15"
+              Spacing="10">
+    <Label>New Project</Label>
     <TextBlock Text="Name" />
-    <TextBox />
-    <Label>Choose a character for replacing</Label> 
-    <ComboBox SelectedIndex="0" MaxDropDownHeight="100">
-    <ComboBoxItem>Text Item 1</ComboBoxItem>
-    <ComboBoxItem>Text Item 2</ComboBoxItem>
-    <ComboBoxItem>Text Item 3</ComboBoxItem>
-    <ComboBoxItem>Text Item 4</ComboBoxItem>
-    <ComboBoxItem>Text Item 5</ComboBoxItem>
-    <ComboBoxItem>Text Item 6</ComboBoxItem>
-    <ComboBoxItem>Text Item 7</ComboBoxItem>
-    <ComboBoxItem>Text Item 8</ComboBoxItem>
-    <ComboBoxItem>Text Item 9</ComboBoxItem>
-  </ComboBox>
-    <Button Content="Create" HorizontalAlignment="Right" />
-</StackPanel>
+    <TextBox Text="{Binding Name}" />
+    <TextBlock Text="Description" />
+    <TextBox Text="{Binding Description}" />
+    <TextBlock Text="Author" />
+    <TextBox Text="{Binding Author}" />
+    <Label>Choose Project Template</Label>
+    <ComboBox ItemsSource="{Binding Templates}" SelectedItem="{Binding SelectedTemplate}" MaxDropDownHeight="100" Width="760" >
+    </ComboBox>
+    <WrapPanel ItemsAlignment="Center" ItemSpacing="50">
+      <Button Name="CreateButton" Content="Create" Click="CreateButton_Click" />
+      <Button Name="CancelButton" Content="Crancel" Click="CancelButton_Click" />
+    </WrapPanel>
+  </StackPanel>
 </Window>

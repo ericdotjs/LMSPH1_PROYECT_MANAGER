@@ -19,8 +19,8 @@
 
     <Menu DockPanel.Dock="Top" Background="Gray">
       <MenuItem Header="_File" >
-      <MenuItem Header="_New Proyect"/>
-      <MenuItem Header="_Load Proyect"/>
+      <MenuItem Name="NewProject" Header="_New Proyect" Click="NewProject_Click" />
+      <MenuItem Name="LoadProject" Header="_Load Proyect"/>
       <Separator/>
       <MenuItem Header="_Exit"/>
       </MenuItem>  

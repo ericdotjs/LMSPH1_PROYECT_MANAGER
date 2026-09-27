@@ -6,19 +6,23 @@ using System.IO;
 using System;
 using LMSPH1_PROYECT_MANAGER.Views;
 using LMSPH1_PROYECT_MANAGER.ViewModels.ConfigurePaths;
+using LMSPH1_PROYECT_MANAGER.ViewModels.Project;
+using LMSPH1_PROYECT_MANAGER.Models.Project;
 
 namespace LMSPH1_PROYECT_MANAGER.Core
 {
     public sealed class Maker
     {
-        public DirectoriesSetters directoriesSetters;
-        public StorageSettings storageSettings;  
-        public Visual mainWWindow;
+        private Project project;
+        private DirectoriesSetters directoriesSetters;
+        private StorageSettings storageSettings;  
+        private Visual mainWWindow;
         public Maker(Visual visual)
         {
             directoriesSetters = new DirectoriesSetters();
             storageSettings = new StorageSettings();
             mainWWindow = visual;
+            project = new Project();
             _ = ScanSettingsFile();
 
         }
@@ -41,6 +45,22 @@ namespace LMSPH1_PROYECT_MANAGER.Core
                 await storageSettings.LoadSettings();
             }
            
+        }
+        public async Task openDialogNewProject()
+        {
+            ProjectViewModel vm = new ProjectViewModel(project);
+            var dialog = new NewProject()
+            {
+                DataContext = vm
+            };
+            bool? result = await dialog.ShowDialog<bool?>((Avalonia.Controls.Window) mainWWindow);
+            if(result == true)
+            {
+                vm.ApplyChanges();
+                project = vm._project;
+            }
+
+
         }
         public async Task ScanSettingsFile()
         {
